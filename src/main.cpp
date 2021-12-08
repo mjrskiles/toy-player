@@ -27,7 +27,8 @@ void setup() {
     // Open the file
     midi_file = SD.open(file_name);
     if (midi_file) {
-        dumpFileToBuffer(midi_file, file_buffer);
+        uint32_t fileSize = dumpFileToBuffer(midi_file, file_buffer);
+
         Serial.println("file:");
 
         // read from the file until there's nothing else in it:

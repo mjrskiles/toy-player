@@ -17,6 +17,8 @@
 
 class MidiPlayer {
 public:
+    MidiPlayer(uint8_t *fileBuffer, uint32_t bufferSize);
+
 protected:
     uint8_t *_fileBuffer;
     uint32_t _bufferSize;
