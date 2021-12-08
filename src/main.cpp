@@ -1,9 +1,14 @@
 #include <Arduino.h>
 #include "SD.h"
+#include "file_reader.h"
+
+#define FILE_BUFFER_SIZE 64384
 
 const char *file_name = "zelda-overworld.mid";
 File midi_file;
 const int chipSelect = BUILTIN_SDCARD;
+
+uint8_t file_buffer[FILE_BUFFER_SIZE];
 
 
 void setup() {
@@ -22,6 +27,7 @@ void setup() {
     // Open the file
     midi_file = SD.open(file_name);
     if (midi_file) {
+        dumpFileToBuffer(midi_file, file_buffer);
         Serial.println("file:");
 
         // read from the file until there's nothing else in it:
