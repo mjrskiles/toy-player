@@ -6,6 +6,7 @@
 #define MIDI_PLAYER_MIDI_PLAYER_H
 
 #include "cstdint"
+#include "midi_stream.h"
 /*
  * The main coordinator. Takes a file in and sends midi messages out
  *
@@ -15,14 +16,22 @@
  *   midi controller
  */
 
+#define NUM_MIDI_TRACKS 16
+
 class MidiPlayer {
 public:
-    MidiPlayer(uint8_t *fileBuffer, uint32_t bufferSize);
+    MidiPlayer(uint8_t *fileBuffer);
+
+    // Should leave the player in a ready to play state (read the header, put pointers to each track)
+    void init(uint32_t bufferSize);
+    void play();
+    void pause();
+    void reset();
 
 protected:
     uint8_t *_fileBuffer;
     uint32_t _bufferSize;
-
+    MidiTrackStream *trackStreams;
 };
 
 #endif //MIDI_PLAYER_MIDI_PLAYER_H

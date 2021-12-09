@@ -4,4 +4,4 @@
 #include "midi_player.h"
 
 
-MidiPlayer::MidiPlayer(uint8_t *fileBuffer, uint32_t bufferSize) : _fileBuffer(fileBuffer), _bufferSize(bufferSize) {}
+MidiPlayer::MidiPlayer(uint8_t *fileBuffer) : _fileBuffer(fileBuffer) {}

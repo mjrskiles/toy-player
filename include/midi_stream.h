@@ -6,12 +6,16 @@
 #define MIDI_PLAYER_MIDI_STREAM_H
 
 #include "midi_types.h"
+#include "byte_stream.h"
+#include "midi_parser.h"
 
-class MidiStream {
+class MidiTrackStream {
 public:
-    bool hasNext();
+    bool hasNext() { return byteStream.hasNext(); }
     TrackEvent nextEvent();
 protected:
+    bool finished = false;
+    ByteStream &byteStream;
 };
 
 #endif //MIDI_PLAYER_MIDI_STREAM_H
