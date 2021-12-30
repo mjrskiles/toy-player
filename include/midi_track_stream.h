@@ -1,15 +1,15 @@
 //
-// Created by Michael Skiles on 12/7/21.
+// Created by mjrsk on 12/27/2021.
 //
 
-#ifndef MIDI_PLAYER_MIDI_STREAM_H
-#define MIDI_PLAYER_MIDI_STREAM_H
+#ifndef TOY_PLAYER_MIDI_TRACK_STREAM_H
+#define TOY_PLAYER_MIDI_TRACK_STREAM_H
 
 #include "midi_types.h"
 #include "byte_stream.h"
 #include "midi_parser.h"
 
-class MidiTrackStream {
+class MidiTrackEventStream {
 public:
     bool hasNext() { return byteStream.hasNext(); }
     TrackEvent nextEvent();
@@ -18,4 +18,4 @@ protected:
     ByteStream &byteStream;
 };
 
-#endif //MIDI_PLAYER_MIDI_STREAM_H
+#endif //TOY_PLAYER_MIDI_TRACK_STREAM_H

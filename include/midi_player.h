@@ -6,7 +6,7 @@
 #define MIDI_PLAYER_MIDI_PLAYER_H
 
 #include "cstdint"
-#include "midi_stream.h"
+#include "midi_file_stream.h"
 /*
  * The main coordinator. Takes a file in and sends midi messages out
  *
@@ -29,9 +29,7 @@ public:
     void reset();
 
 protected:
-    uint8_t *_fileBuffer;
-    uint32_t _bufferSize;
-    MidiTrackStream *trackStreams;
+    MidiFileStream midiFileStream;
 };
 
 #endif //MIDI_PLAYER_MIDI_PLAYER_H

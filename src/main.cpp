@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "SD.h"
 #include "file_reader.h"
+#include "midi_player.h"
 
 #define FILE_BUFFER_SIZE 64384
 
@@ -9,6 +10,7 @@ File midi_file;
 const int chipSelect = BUILTIN_SDCARD;
 
 uint8_t file_buffer[FILE_BUFFER_SIZE];
+MidiPlayer midiPlayer = MidiPlayer(file_buffer);
 
 
 void setup() {
@@ -28,7 +30,7 @@ void setup() {
     midi_file = SD.open(file_name);
     if (midi_file) {
         uint32_t fileSize = dumpFileToBuffer(midi_file, file_buffer);
-
+        midiPlayer.init(fileSize);
         Serial.println("file:");
 
         // read from the file until there's nothing else in it:

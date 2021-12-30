@@ -1,10 +1,10 @@
 //
-// Created by Michael Skiles on 12/7/21.
+// Created by mjrsk on 12/27/2021.
 //
 
-#include "midi_stream.h"
+#include "midi_track_stream.h"
 
-TrackEvent MidiTrackStream::nextEvent() {
+TrackEvent MidiTrackEventStream::nextEvent() {
     midi_long vlq = MidiParser::readVariableLengthQuantity(byteStream);
     MidiEvent midiEvent = MidiParser::readMidiEvent(byteStream);
     TrackEvent trackEvent;
